@@ -1,0 +1,14 @@
+ <% for(var i = 0; i<flowersList.length; i++) { %>
+  <div class="col-md-4">
+    <div class="thumbnail">
+        <img src="<%=flowersList[i].imgUrl %>"  style="width:100%;">
+        <div class="caption">
+          <h>Name: <%=flowersList[i].flowerName %></h>
+          <p>Description: <%=flowersList[i].description %></p>
+          <p>Price: <%=flowersList[i].cost %></p>
+          <% var inInventory= "No"; if(flowersList[i].inInventory) inInventory="Yes"; %>
+          <p>In Inventory: <%=inInventory %></p>
+        </div>
+    </div>
+  </div>
+<% } %>

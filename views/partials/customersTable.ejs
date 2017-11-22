@@ -1,0 +1,211 @@
+<table class="table table-striped center">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Customer Type</th>
+        <th>Store Name</th>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Street</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for(var i = 0; i<customersList.length; i++) { %>
+      <tr>
+        <td><%= customersList[i].firstName %></td>
+        <td><%= customersList[i].lastName %></td>
+        <td><%= customersList[i].customerType %></td>
+        <td><%= customersList[i].storeName %></td>
+        <td><%= customersList[i].userName %></td>
+        <td><%= customersList[i].password %></td>
+        <td><%= customersList[i].address.country %></td>
+        <td><%= customersList[i].address.city %></td>
+        <td><%= customersList[i].address.street + " " + customersList[i].address.number %> </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+
+
+  <div id="reqInfo" class="collapse">
+  <div class="alert alert-info">
+   <strong >Processing!</strong> Your request is being processed by our servers.
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a data-toggle="modal" href="#addModal">Add</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container">
+  <div class="modal fade" id="addModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;background:#5cb85c">
+          <button  type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon"></span> Add Customer</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="firstName"><span class="glyphicon glyphicon-user"></span> First Name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+              <label for="lastName"><span class="glyphicon glyphicon-user"></span> Last Name</label>
+              <input class="form-control" id="lastName" placeholder="Enter last name">
+            </div>
+             <div class="form-group">
+              <label for="newUserName"><span class="glyphicon glyphicon-user"></span> User Name</label>
+              <input  class="form-control" id="newUserName" placeholder="Enter user name">
+            </div>
+             <div class="form-group">
+              <label for="newPassword"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input class="form-control" id="newPassword" placeholder="Enter password">
+            </div>
+           <div class="form-group">
+           <label for="customerType"><span class="glyphicon glyphicon glyphicon-wrench"></span> Select Customer Type</label>
+           <select class="form-control" id="customerType">
+                     <option>Private</option>
+                     <option>Store</option>
+           </select>
+          </div>
+          <div class="form-group">
+           <label for="storeName"><span class="glyphicon glyphicon glyphicon-wrench"></span> Store Name (Optinal)</label>
+           <input class="form-control" id="storeName" placeholder="Enter Store Name">
+          </div>
+          <div class="form-group">
+              <label ><span class="glyphicon glyphicon glyphicon-globe"></span> Address</label>
+              <input class="form-control" id="country" placeholder="Enter Country">
+              <br/>
+              <input class="form-control" id="city" placeholder="Enter City">
+              <br/>
+              <input class="form-control" id="street" placeholder="Enter Street">
+               <br/>
+              <input type="number" class="form-control" id="number" placeholder="Enter Street Number">
+          </div>
+
+           </div>
+              <button id="addButton" data-dismiss="modal" class="btn btn-success btn-block"><span class="glyphicon glyphicon-plus-sign"></span> Add</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>    
+    </div>
+  </div> 
+</div>
+
+
+
+<div class="container">
+  <div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;background:#5cb85c">
+          <button  type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon glyphicon-remove-sign"></span> Delete Employee</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+           
+             <div class="form-group">
+              <label for="delUserName"><span class="glyphicon glyphicon-user"></span> User Name</label>
+              <input  class="form-control" id="delUserName" placeholder="Enter User Name">
+            </div>
+              <button id="deleteButton" data-dismiss="modal" class="btn btn-success btn-block"><span class="glyphicon glyphicon glyphicon-remove-sign"></span> Delete</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button   class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>    
+    </div>
+  </div> 
+</div>
+
+<div class="container">
+  <div class="modal fade" id="updateModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;background:#5cb85c">
+          <button  type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon glyphicon-ok-sign"></span> Promote Employee To Manager</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+           
+             <div class="form-group">
+              <label for="updateUserName"><span class="glyphicon glyphicon-user"></span> User Name</label>
+              <input  class="form-control" id="updateUserName" placeholder="Enter User Name">
+            </div>
+              <button id="updateButton" data-dismiss="modal" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok-sign"></span> Promote</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button   class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+      </div>    
+    </div>
+  </div> 
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+   $(document).ready(function(){
+        $("#addButton").click(function(){
+              
+               $("#reqInfo").fadeOut(function(){
+                   $("#reqInfo").html('<div class="alert alert-info"><strong >Processing!</strong> Your request is being processed by our servers. </div>');
+                   $("#reqInfo").fadeIn();
+                });    
+              $.ajax({url:"/addCustomer", data: { userName: $("#newUserName").val(),
+                                                  password : $("#newPassword").val(),
+                                                  firstName :  $("#firstName").val(),
+                                                  lastName :  $("#lastName").val(),
+                                                  storeName :  $("#storeName").val(),
+                                                  customerType: $("#customerType").val(),
+                                                  country :  $("#country").val(),
+                                                  city :  $("#city").val(),
+                                                  street :  $("#street").val(),
+                                                  number :  $("#number").val()
+                                                  },
+                                                  type:"post",
+                                                  timeout: 5000,
+                                                  success: function(){setTimeout(function(result){
+                 $("#reqInfo").fadeOut(function(){
+                    $("#reqInfo").html('<div class="alert alert-success"><strong >Success!</strong> The customer has been added successfuly.</div>');
+                 });                      
+                 $("#reqInfo").fadeIn();
+              },2000)},
+                 error: function(xhr, ajaxOptions, thrownError) {
+                 $("#reqInfo").fadeOut(function(){
+                   $("#reqInfo").html('<div class="alert alert-danger"><strong >Failure!</strong> '+xhr.responseText+'.</div>');
+                }); 
+                 $("#reqInfo").fadeIn();   
+                }
+                })});
+
+            });
+</script>

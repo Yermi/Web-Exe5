@@ -1,0 +1,44 @@
+<nav class="navbar navbar-inverse" id="navigator">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <% if(typeof navbarItems !== 'undefined') { %>
+        <% for(var i = 0; i < navbarItems.length; i++) { %>
+        <li><a id="<%= navbarItems[i].name %>" href="#" onclick='getNavOption("<%= navbarItems[i].ref %>")'><%= navbarItems[i].name %></a></li>
+        <% }} %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <% if(typeof navbarItems === 'undefined') { %>
+        <li><a data-toggle="modal" href="#myLoginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <% } else {%>
+        <li><a data-toggle="modal" href="#myLogoutModal"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+ <script>
+   function getNavOption(option){
+       $.ajax({url: option ,type:"get", success: function(result){
+                 $("#content").html(result);
+                 $("#content").hide();
+                 $("#content").fadeIn();
+
+              },
+                 error: function (xhr, ajaxOptions, thrownError) {
+                  alert(xhr.responseText);
+             }});
+   }
+ </script>
+
+

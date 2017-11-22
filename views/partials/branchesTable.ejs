@@ -1,0 +1,20 @@
+<table class="table table-striped center">
+    <thead>
+      <tr>
+        <th>Country</th>
+        <th>City</th>
+        <th>Street</th>
+        <th>Number</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% for(var i = 0; i<branchesList.length; i++) { %>
+      <tr>
+        <td><%= branchesList[i].address.country %></td>
+        <td><%= branchesList[i].address.city %></td>
+        <td><%= branchesList[i].address.street %></td>
+        <td><%= branchesList[i].address.number %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>

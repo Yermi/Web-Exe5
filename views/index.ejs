@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include partials/head %>
+</head>
+<body>
+    <header>
+      <% include partials/nav %>
+    </header>
+
+    <div>
+        <% include partials/loginModal %>
+        <% include partials/logoutModal %>
+    </div>
+
+    <div class="container" id="content">
+       <div class="page-header">
+         <h1>Please Login First</h1> 
+       </div>
+    </div>
+   
+	<div>
+		 <% include partials/footer %>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#loginBtn").click(function(){
+              $.ajax({url:"/login", data: { userName: $("#usrname").val(), password : $("#psw").val()} ,type:"post", success: function(result){
+                 $("header").html(result);
+                 $('.modal-backdrop').remove();
+                 $("#Home").trigger("click");
+              },
+                 error: function (xhr, ajaxOptions, thrownError) {
+                  alert(xhr.responseText);
+                  }});
+            });
+             $("#logoutBtn").click(function(){
+              $.ajax({url:"/logout", success: function(result){
+                 $("header").html(result);
+                 $("#content").html(' <div class="page-header"> <h1>Please Login First</h1> </div>');
+              }});
+            });
+        });
+
+ </script> 
+</body>
+</body>
+</html>
